@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" >
+<head>
+<script src="libraries/angular.min.js"></script>
+<script src="controller/controller.js"></script>
+<link href="styles/general.css" rel="stylesheet"/>
+</head>
+<body data-ng-app="myModule" ng-controller="myController">
+<table>
+<tr><td colspan="4" class = "tdMain">Voucher entry Screen</td></tr>
+<tr>
+<td>Voucher Number</td>
+<td><input 
+					id="txtVoucherNumber"
+					type="text" 
+					only-digits
+					maxlength="50"
+					data-ng-model="voucherNumber"/></td>
+<td>Voucher Date</td>
+<td><input 
+					id="txtVoucherDate"
+					type="text" 
+					maxlength="10"
+					class="medInput"
+					data-ng-model="voucherDate"/></td>
+</tr>
+<tr>
+<td>Debit Account</td>
+<td>
+<select 
+		id="debitAmount"
+			class="ctInput"
+			data-ng-model="debitAccount">
+			<option value="Bank">Bank</option>
+     		 <option value="Cash">Cash</option>
+    	</select>
+</td>
+<td>Credit Account</td>
+<td>
+<select 
+		id="debitAmount"
+			class="ctInput"
+			data-ng-model="creditAccount">
+			<option value="Bank">Bank</option>
+     		 <option value="Cash">Cash</option>
+    	</select>
+</td>
+</tr>
+<tr>
+<td>Voucher Description</td>
+<td colspan ="3"><textarea name="comments" cols="62" rows="10" maxlength="128" id="txtVoucherDescription" data-ng-model="voucherDescription"></textarea></td>
+</tr>
+<tr>
+<td>Amount</td>
+<td><input 
+					id="txtAmount"
+					type="text" 
+					maxlength="50"
+					only-amounts
+					class="medInput"
+					data-ng-model="amount"/></td>
+<td><button class="cancelbtn" id ="btnAddVoucher" data-ng-click="addVoucher();">Add Voucher</button></td>
+<td><button class="cancelbtn" id ="btnCancelVoucher" data-ng-click="cancelVoucher();">Cancel Voucher</button></td>
+</tr>
+</table>
+<br>
+<table>
+<thead>
+<th>Voucher Description</th>
+<th>Debit Account</th>
+<th>Credit Account</th>
+<th>Amount</th>
+</thead>
+<tbody>
+<tr ng-repeat="vouchers in voucherDetails">
+<td>{{vouchers.voucherDescription}}</td>
+<td>{{vouchers.debitAccount}}</td>
+<td>{{vouchers.creditAccount}}</td>
+<td>{{vouchers.amount}}</td>
+</tr>
+<tbody>
+</table>
+<br>
+<div><button class="cancelbtn" id ="btnSubmitVoucher" data-ng-click="submitVoucher();">Submit Voucher</button></div>
+
+
+
+</body>
+</html>
